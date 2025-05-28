@@ -2,7 +2,7 @@
 
 ---
 
-# 모듈 : BmpUtile
+# BmpUtile 문서
 
 ---
 

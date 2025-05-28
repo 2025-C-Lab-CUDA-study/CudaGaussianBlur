@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36109.1 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CudaGaussianBlur", "CudaGaussianBlur\CudaGaussianBlur.vcxproj", "{FE58A0DB-7B3E-5B52-FA11-862955BB308A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE58A0DB-7B3E-5B52-FA11-862955BB308A}.Debug|x64.ActiveCfg = Debug|x64
+		{FE58A0DB-7B3E-5B52-FA11-862955BB308A}.Debug|x64.Build.0 = Debug|x64
+		{FE58A0DB-7B3E-5B52-FA11-862955BB308A}.Release|x64.ActiveCfg = Release|x64
+		{FE58A0DB-7B3E-5B52-FA11-862955BB308A}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A504A73-C1C0-4755-B5DE-B6EF00A01840}
+	EndGlobalSection
+EndGlobal

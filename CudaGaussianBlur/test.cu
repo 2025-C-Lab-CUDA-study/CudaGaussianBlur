@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "BmpUtile.h"
+#include "GaussianDistribution.h"
 
 
 #define CUDA_CHECK(err) do { \
@@ -14,12 +15,13 @@
 #define CUDA_KERNEL_CHECK() CUDA_CHECK(cudaGetLastError())
 
 
+constexpr int STDDEV = 2;
 constexpr int BLOCK_SIZE = 256;
-constexpr int KERNEL_SIZE = 5;
+constexpr int KERNEL_SIZE = 7;
 constexpr int KERNEL_RADIUS = KERNEL_SIZE / 2;
 
 
-__constant__ float d_kernel[KERNEL_SIZE] = { 0.1f, 0.2f, 0.4f, 0.2f, 0.1f };
+__constant__ double d_kernel[KERNEL_SIZE];
 
 
 
@@ -48,7 +50,7 @@ __global__ void HorizontalBlur(unsigned char* resultBuffer, unsigned char* input
 
         __syncthreads();
 
-        float sum = 0.0f;
+        double sum = 0.0f;
         for (int i = -KERNEL_RADIUS; i <= KERNEL_RADIUS; ++i)
         {
             sum += sharedData[localIdx + i] * d_kernel[i + KERNEL_RADIUS];
@@ -84,7 +86,7 @@ __global__ void VerticalBlur(unsigned char* resultBuffer, unsigned char* inputBu
 
         __syncthreads();
 
-        float sum = 0.0f;
+        double sum = 0.0f;
         for (int i = -KERNEL_RADIUS; i <= KERNEL_RADIUS; ++i)
         {
             int offsetY = y + i;
@@ -137,6 +139,12 @@ void RemovePadding(unsigned char* dstBuffer, unsigned char* srcBuffer, const int
 
 int main(void)
 {
+    // Set distribution ==============================================================================
+
+    double* h_kernel = nullptr;
+    Distribution::Generate(KERNEL_SIZE, &h_kernel, STDDEV);
+    CUDA_CHECK(cudaMemcpyToSymbol(d_kernel, h_kernel, sizeof(double) * KERNEL_SIZE, 0, cudaMemcpyHostToDevice));
+
     // Set host data ==================================================================================
 
     int h_width, h_height;

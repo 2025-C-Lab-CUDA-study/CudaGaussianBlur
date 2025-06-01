@@ -11,13 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <CudaCompile Include="main.cu" />
+    <CudaCompile Include="test.cu" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BmpUtile.h" />
+    <ClInclude Include="GaussianDistribution.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BmpUtile.cpp" />
+    <ClCompile Include="GaussianDistribution.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FE58A0DB-7B3E-5B52-FA11-862955BB308A}</ProjectGuid>

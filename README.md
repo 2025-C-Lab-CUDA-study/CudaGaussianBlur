@@ -6,7 +6,7 @@
 
 ---
 
-##개요
+## 개요
 - bmp 파일을 RGB 버퍼로 변환하거나, RGB 버퍼를 BMP 파일로 저장하는 기능을 제공.
 
 ### BMPFileHeader
